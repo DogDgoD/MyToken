@@ -9,24 +9,34 @@ This project provides a comprehensive guide to creating your own cryptocurrency 
 
 ## Getting Started
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
 
-## Help
+Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+```javascript
+pragma solidity 0.8.18;
+
+contract MyToken {
+
+    string public tokenName = "LANCE";
+    string public tokenAbbrv = "LNE";
+    uint256 public totalSupply;
+
+    mapping(address => uint256) public balances;
+
+    function mint(address _address, uint256 _value) public {
+        totalSupply += _value;
+        balances[_address] += _value;
+    }
+
+    function burn(address _address, uint256 _value) public {
+        require(balances[_address] >= _value, "Insufficient balance to burn");
+        totalSupply -= _value;
+        balances[_address] -= _value;
+    }
+}
 ```
 
 ## Authors
